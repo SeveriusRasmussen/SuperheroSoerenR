@@ -12,7 +12,7 @@ this.realName = realName;
 this.superPower = superPower;
 this.yearCreated = yearCreated;
 this.isHuman = String.valueOf(isHuman);
-this.strength=strength;
+this.strength = strength;
 }
 
 public String getName(){
