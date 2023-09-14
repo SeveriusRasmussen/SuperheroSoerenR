@@ -1,23 +1,31 @@
+import java.util.ArrayList;
+
 public class Database {
 
-private Superhero[] superheroList;
-int count= 0;
-private int listSize = 5;
-public Database() {
-this.superheroList = new Superhero[listSize];
+    private int listSize = 10;
+    // private Superhero[] superheroList;
+    private ArrayList<Superhero> superHeroList;
 
-}
+    public Database() {
+        this.superHeroList = new ArrayList<>();
+    }
 
-public void addHero(String name, String realName, String superPower, int yearCreated, String isHuman, String strength) {
-superheroList[count++] = new Superhero(name,realName,superPower,yearCreated,isHuman,strength);
-}
+    public void addSuperHero(
+            String name, String realName, String superPower,
+            double yearCreated, String isHuman, double strength) {
 
-public Superhero[] getSuperheroList() {
-    return superheroList;
-}
+        Superhero superhero = new Superhero(
+                name, realName, superPower, yearCreated, isHuman, strength);
+        superHeroList.add(superhero);
+        // superheroList[count++] = new Superhero(name,realName,superPower,yearCreated,isHuman,strength);
+    }
 
-public int getListSize() {
-    return listSize;
+    public ArrayList<Superhero> getSuperHeroList() {
+        return superHeroList;
+    }
+
+    public int getCapacity() {
+        return listSize;
     }
 
 
