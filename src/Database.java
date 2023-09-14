@@ -5,7 +5,7 @@ public class Database {
     private int listSize = 10;
     // private Superhero[] superheroList;
     private ArrayList<Superhero> superHeroList;
-
+    // bla.
     public Database() {
         this.superHeroList = new ArrayList<>();
     }
