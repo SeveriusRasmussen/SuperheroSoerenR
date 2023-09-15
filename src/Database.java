@@ -2,31 +2,34 @@ import java.util.ArrayList;
 
 public class Database {
 
-    private int listSize = 10;
-    // private Superhero[] superheroList;
-    private ArrayList<Superhero> superHeroList;
-    // bla.
+    //Array
+    private ArrayList<Superhero> superherolist;
+
+    //array
     public Database() {
-        this.superHeroList = new ArrayList<>();
+        this.superherolist = new ArrayList<>();
     }
 
-    public void addSuperHero(
-            String name, String realName, String superPower,
-            double yearCreated, String isHuman, double strength) {
-
-        Superhero superhero = new Superhero(
-                name, realName, superPower, yearCreated, isHuman, strength);
-        superHeroList.add(superhero);
-        // superheroList[count++] = new Superhero(name,realName,superPower,yearCreated,isHuman,strength);
+    //get metode
+    public ArrayList<Superhero> getSuperherolist() {
+        return superherolist;
     }
 
-    public ArrayList<Superhero> getSuperHeroList() {
-        return superHeroList;
+    //metode til at adde til arraylist
+    public void addSuperhero(Superhero superhero) {
+        superherolist.add(superhero);
     }
 
-    public int getCapacity() {
-        return listSize;
+    public Superhero findSuperhero(String searchTerm){
+        searchTerm = searchTerm.toLowerCase();
+
+        for (Superhero hero : superherolist) {
+            String heroName = hero.getName().toLowerCase();
+            if (heroName.equals(searchTerm) || heroName.startsWith(searchTerm))
+                return hero;
+        }
+
+        return null;
     }
-
-
+// updated with Nikolaj and Usman 14 sept.
 }

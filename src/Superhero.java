@@ -1,16 +1,16 @@
 public class Superhero {
 
+    //Attributes
     private String name;
     private String realName;
     private String superPower;
-    private double yearCreated;
+    private int yearCreated;
     private String isHuman;
     private double strength;
-/* Hvis man vil ændre nogle af disse overstående skal man ændre i "this"-konstruktør på linje 11
-   og i return del under "this" og endelig på public void i database på linje 13. */
 
+    //Konstruktør
     public Superhero(String name, String realName, String superPower,
-                     double yearCreated, String isHuman, double strength) {
+                     int yearCreated, String isHuman, double strength) {
         this.name = name;
         this.realName = realName;
         this.superPower = superPower;
@@ -19,6 +19,7 @@ public class Superhero {
         this.strength = strength;
     }
 
+    //get metoder
     public String getName() {
         return name;
     }
@@ -31,7 +32,7 @@ public class Superhero {
         return superPower;
     }
 
-    public double getYearCreated() {
+    public int getYearCreated() {
         return yearCreated;
     }
 
@@ -47,11 +48,11 @@ public class Superhero {
     @Override
     public String toString() {
         return "\nSuperhero\n" +
-                "name: " + name + "\n" +
-                "realName:'" + realName + "\n" +
-                "superPower:'" + superPower + "\n" +
-                "yearCreated:" + yearCreated + "\n" +
-                "isHuman:" + isHuman + "\n" +
-                "strength:'" + strength;
+                "\nname: " + name +
+                "\nrealName:'" + realName +
+                "\nsuperPower:'" + superPower +
+                "\nyearCreated:" + yearCreated +
+                "\nisHuman:" + isHuman +
+                "\nstrength:'" + strength;
     }
-} //updated with Usman
+} //updated with Nikolaj and Usman 14 sept
