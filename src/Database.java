@@ -5,6 +5,7 @@ public class Database {
     //Array
     private ArrayList<Superhero> superherolist;
 
+
     //array
     public Database() {
         this.superherolist = new ArrayList<>();
@@ -20,16 +21,25 @@ public class Database {
         superherolist.add(superhero);
     }
 
-    public Superhero findSuperhero(String searchTerm){
-        searchTerm = searchTerm.toLowerCase();
-
+    public Superhero findSuperhero(String superheroName){
         for (Superhero hero : superherolist) {
-            String heroName = hero.getName().toLowerCase();
-            if (heroName.equals(searchTerm) || heroName.startsWith(searchTerm))
+            //Hvis man vil have toLowerCase så gøre man det her i "if"
+            if (hero.getName().toLowerCase().contains(superheroName.toLowerCase()))
                 return hero;
         }
 
         return null;
     }
-// updated with Nikolaj and Usman 14 sept.
+
+    public ArrayList<Superhero> findSuperheroes(String superheroName){
+        ArrayList<Superhero> superheroes = new ArrayList<>();
+        for (Superhero superhero : superherolist) {
+            //Hvis man vil også have toLowerCase her, så gøre det igen som overstående.
+            if (superhero.getName().toLowerCase().contains(superheroName.toLowerCase())){
+                superheroes.add(superhero);
+            }
+        }
+        return superheroes;
+    }
+
 }
