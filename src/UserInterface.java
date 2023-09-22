@@ -17,8 +17,6 @@ public class UserInterface {
         Database database = new Database();
         Scanner keyboard = new Scanner(System.in);
 
-        // Object superherolist = database.getSuperherolist(); // get fra Databasen linje 23
-
         do {
             System.out.println("""
                     Choose a number:
@@ -31,7 +29,6 @@ public class UserInterface {
             while (!keyboard.hasNextInt()) {
                 keyboard.nextLine();
                 System.out.println("Enter a number: ");
-
             }
 
             choice = keyboard.nextInt();
@@ -115,9 +112,6 @@ public class UserInterface {
                 System.out.println("What superhero do you wanna edit?");
                 String brugerInput = keyboard.nextLine();
 
-                //List over superhelterne
-
-
                 //find superhelte
                 ArrayList<Superhero> søgeResultat = database.findSuperheroes(brugerInput);
                 Superhero superheroDerSkalRedigeres = null;
@@ -143,12 +137,13 @@ public class UserInterface {
                     keyboard.nextLine(); //clearer scanner
                     superheroDerSkalRedigeres = søgeResultat.get(superheroValg - 1);
                 }
+
                 //søgning finder 1 person
                 else {
                     superheroDerSkalRedigeres = søgeResultat.get(0);
                 }
-                //Redigering af valgte personer
 
+                //Redigering af valgte personer
                 if (superheroDerSkalRedigeres != null) {
                     System.out.println("Edit superhero stats. Press Enter if the stats do not need to get changed");
                     String nyVærdi;
@@ -168,10 +163,20 @@ public class UserInterface {
                         superheroDerSkalRedigeres.setSuperPower(nyVærdi);
                     }
                     System.out.println("Year created: " + superheroDerSkalRedigeres.getYearCreated());
-                    nyVærdi = keyboard.nextLine();
-                    if (!nyVærdi.isEmpty()) {
-                        superheroDerSkalRedigeres.setYearCreated(Integer.parseInt(nyVærdi));
-                    }
+                    do {
+                        nyVærdi = keyboard.nextLine();
+                        if (nyVærdi.isEmpty()) {
+                            break;
+                        } else {
+                            try {
+                                superheroDerSkalRedigeres.setYearCreated(Integer.parseInt(nyVærdi));
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("It's not a valid number, try again");
+                            }
+                        }
+                    } while (true);
+
                     System.out.println("Is Human: " + superheroDerSkalRedigeres.getIsHuman());
                     nyVærdi = keyboard.nextLine();
                     if (!nyVærdi.isEmpty()) {
@@ -182,7 +187,7 @@ public class UserInterface {
                     if (!nyVærdi.isEmpty()) {
                         superheroDerSkalRedigeres.setStrength(Integer.parseInt(nyVærdi));
                     }
-                    System.out.println(superheroDerSkalRedigeres + "is updated");
+                    System.out.println(superheroDerSkalRedigeres);
                 }
 
 
